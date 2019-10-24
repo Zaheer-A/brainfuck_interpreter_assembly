@@ -24,7 +24,7 @@ brainfuck:
 	
 nextChar:	
 	incq %rcx				              # Increment the counter
-	movb (%rsi, %rcx, 1), %al		  # get the next character from the string into register			
+	movb (%rsi, %rcx, 1), %al		  # add %rcx to %rsi and multiply by one to get the next character from the string.			
 	cmpb $0, %al				          # checking if the char (byte) is a zero byte (end of string)
 	jne	loop1				              # if it is not a zero byte, then we jump to our loop subruotine
 	jmp endsub			            	# if it is a zero byte (end of string) we end our brainfuck interpreter.
@@ -68,11 +68,11 @@ loop1:
 		jmp nextChar			  # go back to nextChar to get the next character from the string.
 
 	loop_open:
-		movb $'[', %r8
-		cmpb %al, %r8
-		jne loop_close
+		movb $'[', %r8			# move the '[' char for compare operation
+		cmpb %al, %r8			
+		jne loop_close			# if it is not a '[' then go to the next check subroutine
 
-		mov (%rsp, %rbx, 8), %rax
+		mov (%rsp, %rbx, 8), %rax	# check if this code works..............
 		cmp $0, %rax
 		jne loop_open_nonzero
 
