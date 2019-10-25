@@ -32,7 +32,7 @@ nextChar:
 	
  		
 loop1:	
-	plus:					        # check if the character in %al is a plus operator
+	plus:					        # check if the character in %al is a plus operator 
 		movb $'+', %r8			# moving the '+' char for compare operation
 		cmpb %al, %r8
 		jne minus			      # if it is not a '+' then go to the next check subroutine
